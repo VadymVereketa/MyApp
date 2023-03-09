@@ -65,6 +65,11 @@ const FloatButton = ({onHide, onShow, actions = []}: Props) => {
     .shouldCancelWhenOutside(false)
     .onStart(() => {
       runOnJS(longPress)();
+    })
+    .onEnd((e, success) => {
+      if (success) {
+        runOnJS(shortPress)();
+      }
     });
 
   const handleComplete = () => {
